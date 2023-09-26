@@ -1,0 +1,2 @@
+# lingslidecom
+aws django docker
