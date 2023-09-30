@@ -15,8 +15,10 @@ export function App() {
 
   const formik = useFormik({
     initialValues: {
+      status: isStudent,
       email: "",
       language: "",
+      education: "",
       suggestions: "",
     },
     validate: (values) => {
@@ -36,7 +38,7 @@ export function App() {
   });
 
   return (
-    <Box p={0} maxWidth="400px" mx="auto">
+    <Box p="0px" maxWidth="400px" mx="auto">
       <form onSubmit={formik.handleSubmit}>
         {/* Email */}
         <FormControl id="email" mb={3}>
@@ -52,82 +54,125 @@ export function App() {
         </FormControl>
 
         {/* Language */}
-        <FormControl id="language" mb={3}>
-          {isStudent === "teacher" ? (
-            <FormLabel>Öğrettiğiniz dil</FormLabel>
-          ) : (
-            <FormLabel>Öğrendiğiniz dil</FormLabel>
-          )}
-          <Select
-            name="language"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.language}
-          >
-            <option
-              value=""
-              label="Bir dil seçin"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="english"
-              label="İngilizce"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="german"
-              label="Almanca"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="french"
-              label="Fransızca"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="spanish"
-              label="İspanyolca"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="italian"
-              label="İtalyanca"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="portoguese"
-              label="Portekizce"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="turkish"
-              label="Türkçe"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="japanese"
-              label="Japonca"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="russian"
-              label="Rusça"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="arabic"
-              label="Arapça"
-              style={{ color: "black", mt: "3px" }}
-            />
-            <option
-              value="persian"
-              label="Farsça"
-              style={{ color: "black", mt: "3px" }}
-            />
-            {/* Add more options as needed */}
-          </Select>
-        </FormControl>
+        <Box display="flex" justifyContent="space-between">
+          <FormControl id="language" mb={3} w="48%">
+            {isStudent === "teacher" ? (
+              <FormLabel>Öğrettiğiniz dil</FormLabel>
+            ) : (
+              <FormLabel>Öğrendiğiniz dil</FormLabel>
+            )}
+            <Select
+              name="language"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.language}
+            >
+              <option
+                value=""
+                label="Bir dil seçin"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="english"
+                label="İngilizce"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="german"
+                label="Almanca"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="french"
+                label="Fransızca"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="spanish"
+                label="İspanyolca"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="italian"
+                label="İtalyanca"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="portoguese"
+                label="Portekizce"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="turkish"
+                label="Türkçe"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="japanese"
+                label="Japonca"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="russian"
+                label="Rusça"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="arabic"
+                label="Arapça"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="persian"
+                label="Farsça"
+                style={{ color: "black", mt: "3px" }}
+              />
+              {/* Add more options as needed */}
+            </Select>
+          </FormControl>
 
+          <FormControl id="education" mb={3} w="48%">
+            {isStudent === "teacher" ? (
+              <FormLabel>Eğitim kurumu</FormLabel>
+            ) : (
+              <FormLabel>Eğitim durumu</FormLabel>
+            )}
+            <Select
+              name="education"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.education}
+            >
+              <option
+                value=""
+                label="Eğitim"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="ms"
+                label="Ortaokul"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="hs"
+                label="Lise"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="uni"
+                label="Üniversite"
+                style={{ color: "black", mt: "3px" }}
+              />
+              <option
+                value="graduate"
+                label="Mezunum"
+                style={{ color: "black", mt: "3px" }}
+              />
+
+              {/* Add more options as needed */}
+            </Select>
+          </FormControl>
+        </Box>
         {/* Suggestions */}
         <FormControl id="suggestions" mb={4}>
           <FormLabel>Önerileriniz</FormLabel>
@@ -140,7 +185,7 @@ export function App() {
           />
         </FormControl>
 
-        <Button type="submit" colorScheme="pink" bg={"pink.500"} width="full">
+        <Button type="submit" colorScheme="pink" bg={"pink.800"} width="full">
           Kayıt yap
         </Button>
       </form>

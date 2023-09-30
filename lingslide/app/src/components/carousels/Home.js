@@ -51,12 +51,12 @@ export default function CaptionCarousel() {
             key={index}
             p={6}
             me={9}
-            border="1px solid white"
+            border="2px solid white"
             borderRadius={"md"}
             boxShadow="lg"
             bg="transparent"
             color="white"
-            width={"100%"}
+            width={"98%"}
             height={"300px"}
           >
             <Heading size="md" mb={4}>

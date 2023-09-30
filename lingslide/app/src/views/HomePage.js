@@ -67,9 +67,8 @@ function HomePage() {
             </Text>
           </Heading>
           <Text color={"white"}>
-            Monetize your content by charging your most loyal readers and reward
-            them loyalty points. Give back to your loyal readers by granting
-            them access to your pre-releases and sneak-peaks.
+            Session based interactive slide app. Give back to your loyal readers
+            by granting them access to your pre-releases and sneak-peaks.
           </Text>
 
           <CaptionCarousel />
@@ -134,9 +133,7 @@ function HomePage() {
             <Flex minW="100%" flexWrap="wrap" gridGap={4}>
               <Card
                 flex={isStudent ? 1 : 0}
-                customBorder={
-                  isStudent === "teacher" ? "2px solid" : "1px solid"
-                } // Adjust the border based on the selected card.
+                isSelected={isStudent === "teacher" ? true : false} // Adjust the border based on the selected card.
                 heading={"Ben öğretmenim."}
                 icon={<Icon as={FcAssistant} w={10} h={10} />}
                 description={
@@ -147,9 +144,7 @@ function HomePage() {
               />
               <Card
                 flex={1}
-                customBorder={
-                  isStudent === "student" ? "2px solid" : "1px solid"
-                } // Adjust the border based on the selected card.
+                isSelected={isStudent === "student" ? true : false} // Adjust the border based on the selected card.
                 heading={"Ben öğrenciyim."}
                 icon={<Icon as={FcCollaboration} w={10} h={10} />}
                 description={
@@ -166,7 +161,8 @@ function HomePage() {
                   borderWidth="1px"
                   // borderRadius="lg"
                   overflow="hidden"
-                  p={5}
+                  p={2}
+                  pt={4}
                 >
                   {isStudent === "teacher" && (
                     <div>
