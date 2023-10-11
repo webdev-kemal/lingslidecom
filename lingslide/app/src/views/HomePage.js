@@ -45,7 +45,7 @@ function HomePage() {
         bg={theme === "dark" ? "#13163c" : "#13163c"}
       >
         <Stack
-          mx={{ base: "5%", md: "23%" }}
+          mx={{ base: "4%", md: "23%" }}
           as={Box}
           //   textAlign={"center"}
           spacing={{ base: 8, md: 10 }}
@@ -118,7 +118,7 @@ function HomePage() {
             </Box>
           </Stack>
         </Stack>
-        <Box mx={{ base: "5%", md: "23%" }}>
+        <Box mx={{ base: "4%", md: "23%" }}>
           <Stack id="secondpage">
             <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
               Erken erişim
@@ -132,6 +132,7 @@ function HomePage() {
           <Container maxW={"100%"} mt={10} p={0}>
             <Flex minW="100%" flexWrap="wrap" gridGap={4}>
               <Card
+                w={"28%"}
                 flex={isStudent ? 1 : 0}
                 isSelected={isStudent === "teacher" ? true : false} // Adjust the border based on the selected card.
                 heading={"Ben öğretmenim."}
@@ -143,6 +144,7 @@ function HomePage() {
                 role="teacher"
               />
               <Card
+                w={"28%"}
                 flex={1}
                 isSelected={isStudent === "student" ? true : false} // Adjust the border based on the selected card.
                 heading={"Ben öğrenciyim."}
@@ -156,7 +158,8 @@ function HomePage() {
               {isStudent && (
                 <Box
                   // maxW={{ base: "full", md: "full" }}
-                  flexGrow={1}
+                  w={{ base: "100%", md: "44%" }}
+                  // flexGrow={1}
                   // w={"full"}
                   borderWidth="1px"
                   // borderRadius="lg"

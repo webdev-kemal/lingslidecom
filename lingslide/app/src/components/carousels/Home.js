@@ -38,7 +38,12 @@ export default function CaptionCarousel() {
   ];
 
   return (
-    <Box w="60%" mx="auto" minH="150px">
+    <Box
+      w={{ base: "100%", md: "60%" }}
+      mx="auto"
+      minH={{ base: "100px", md: "150px" }}
+      // maxH={{ base: "100px" }}
+    >
       <Flicking
         gap={20}
         overflow="scroll"
@@ -57,7 +62,8 @@ export default function CaptionCarousel() {
             bg="transparent"
             color="white"
             width={"98%"}
-            height={"300px"}
+            height={{ base: "200px", md: "300px" }}
+            // height={"300px"}
           >
             <Heading size="md" mb={4}>
               {card.title}

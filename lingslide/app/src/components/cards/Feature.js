@@ -34,9 +34,9 @@ export const Card = ({
             display="flex"
             alignItems="center"
             position={"absolute"}
-            left={"50%"}
+            left={{ base: "77%", md: "50%" }}
             transform={"translate(-50%, 0%)"}
-            bottom={"3%"}
+            bottom={{ base: "76%", md: "3%" }}
           >
             <Text
               fontFamily={"League Spartan"}

@@ -38,7 +38,12 @@ export function App() {
   });
 
   return (
-    <Box p="0px" maxWidth="400px" mx="auto">
+    <Box
+      p="0px"
+      px={3}
+      // maxWidth="400px"
+      mx="auto"
+    >
       <form onSubmit={formik.handleSubmit}>
         {/* Email */}
         <FormControl id="email" mb={3}>
@@ -185,7 +190,14 @@ export function App() {
           />
         </FormControl>
 
-        <Button type="submit" colorScheme="pink" bg={"pink.800"} width="full">
+        <Button
+          type="submit"
+          colorScheme="pink"
+          bg={"pink.800"}
+          width="full"
+          mb={{ base: 2, md: 0 }}
+          // mb={2}
+        >
           Kayıt yap
         </Button>
       </form>
