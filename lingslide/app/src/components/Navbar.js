@@ -96,7 +96,7 @@ export default function WithSubnavigation() {
             variant={"link"}
             href={"#"}
           >
-            Giriş Yap
+            Google ile giriş yap
           </Button>
           <Button
             me="6px"

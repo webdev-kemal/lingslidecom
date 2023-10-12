@@ -16,6 +16,7 @@ export function App() {
   const formik = useFormik({
     initialValues: {
       status: isStudent,
+      phone: "90",
       email: "",
       language: "",
       education: "",
@@ -23,12 +24,20 @@ export function App() {
     },
     validate: (values) => {
       const errors = {};
+      // Email validation
       if (!values.email) {
         errors.email = "Required";
       } else if (
         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
       ) {
         errors.email = "Invalid email address";
+      }
+      // Phone validation
+      if (!values.phone) {
+        errors.phone = "Required";
+      } else if (!/^\d{8,12}$/.test(values.phone)) {
+        errors.phone =
+          "Invalid phone number. It should have 10 digits and only contain numbers.";
       }
       return errors;
     },
@@ -46,7 +55,18 @@ export function App() {
     >
       <form onSubmit={formik.handleSubmit}>
         {/* Email */}
-        <FormControl id="email" mb={3}>
+        <FormControl id="phone" mb={3}>
+          <FormLabel>Telefon (+90)</FormLabel>
+          <Input
+            type="phone"
+            name="phone"
+            onChange={formik.handleChange}
+            value={formik.values.phone}
+            onBlur={formik.handleBlur}
+            isInvalid={formik.touched.phone && formik.errors.phone}
+          />
+        </FormControl>
+        {/* <FormControl id="email" mb={3}>
           <FormLabel>E-posta</FormLabel>
           <Input
             type="email"
@@ -56,7 +76,7 @@ export function App() {
             onBlur={formik.handleBlur}
             isInvalid={formik.touched.email && formik.errors.email}
           />
-        </FormControl>
+        </FormControl> */}
 
         {/* Language */}
         <Box display="flex" justifyContent="space-between">

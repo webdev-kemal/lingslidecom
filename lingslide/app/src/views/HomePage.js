@@ -8,18 +8,22 @@ import {
   Icon,
   createIcon,
   Flex,
+  useMediaQuery,
 } from "@chakra-ui/react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ThemeContext } from "../App";
 import { FcAssistant, FcCollaboration } from "react-icons/fc";
 import { Card } from "../components/cards/Feature";
 import CaptionCarousel from "../components/carousels/Home";
 import App from "../components/forms/Home";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const { theme, isStudent, setSelected } = useContext(ThemeContext);
+  const [isLarge] = useMediaQuery("(min-width: 600px)");
+  const navigate = useNavigate();
 
-  const handleScrollByPixels = () => {
+  const handleScrollToForm = () => {
     const element = document.querySelector("#secondpage");
     if (element) {
       element.scrollIntoView({
@@ -27,25 +31,35 @@ function HomePage() {
       });
     }
   };
-  // const handleScrollByPixels = () => {
-  //   window.scrollBy({
-  //     top: 880,
-  //     left: 0,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const handleScrollToDetails = () => {
+    if (null == isStudent && !isLarge) {
+      window.scrollBy({
+        top: 300,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+  const handleScrollByPixels = () => {
+    window.scrollBy({
+      top: 880,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
       <Container
         color={"white"}
         fontFamily={"League Spartan"}
-        minW="100%"
+        minW="60%"
+        mx="auto"
         minH="98vh"
         bg={theme === "dark" ? "#13163c" : "#13163c"}
       >
         <Stack
-          mx={{ base: "4%", md: "23%" }}
+          // mx={{ base: "4%", md: "23%" }}
           as={Box}
           //   textAlign={"center"}
           spacing={{ base: 8, md: 10 }}
@@ -90,11 +104,18 @@ function HomePage() {
                 bg: "white",
                 color: "black",
               }}
-              onClick={handleScrollByPixels}
+              onClick={handleScrollToForm}
             >
               Ön Kayıt Yap
             </Button>
-            <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
+            <Button
+              variant={"link"}
+              onClick={() => {
+                navigate("/blogs");
+              }}
+              colorScheme={"blue"}
+              size={"sm"}
+            >
               Bilgi alın
             </Button>
             <Box>
@@ -113,26 +134,31 @@ function HomePage() {
                 top={"-15px"}
                 transform={"rotate(10deg)"}
               >
-                100% İndirim Şansı!
+                100% İndirim!
               </Text>
             </Box>
           </Stack>
         </Stack>
-        <Box mx={{ base: "4%", md: "23%" }}>
+        <Box
+          // mx={{ base: "4%", md: "23%" }}
+          w="100%"
+          mx="auto"
+        >
           <Stack id="secondpage">
             <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
               Erken erişim
             </Heading>
             <Text color={"gray.300"} fontSize={{ base: "sm", sm: "lg" }}>
-              Erken kayıt yapan öğretmen ve öğrenciler yüzde yüz indirim şansı
-              kazanır. Geliştirme sürecinde destek olan herkese teşekkür ederiz.
+              Erken kayıt yapan öğretmen ve öğrenciler ömür boyu yüzde yüz
+              indirim kazanır. Geliştirme sürecinde destek olan herkese teşekkür
+              ederiz.
             </Text>
           </Stack>
 
           <Container maxW={"100%"} mt={10} p={0}>
             <Flex minW="100%" flexWrap="wrap" gridGap={4}>
               <Card
-                w={"28%"}
+                w={"30%"}
                 flex={isStudent ? 1 : 0}
                 isSelected={isStudent === "teacher" ? true : false} // Adjust the border based on the selected card.
                 heading={"Ben öğretmenim."}
@@ -142,9 +168,10 @@ function HomePage() {
                 }
                 href={"#"}
                 role="teacher"
+                onClick={handleScrollToDetails}
               />
               <Card
-                w={"28%"}
+                w={"30%"}
                 flex={1}
                 isSelected={isStudent === "student" ? true : false} // Adjust the border based on the selected card.
                 heading={"Ben öğrenciyim."}
@@ -154,12 +181,14 @@ function HomePage() {
                 }
                 href={"#"}
                 role="student"
+                onClick={handleScrollToDetails}
               />
               {isStudent && (
                 <Box
+                  id="form"
                   // maxW={{ base: "full", md: "full" }}
-                  w={{ base: "100%", md: "44%" }}
-                  // flexGrow={1}
+                  // w={{ base: "100%", md: "44%" }}
+                  flexGrow={1}
                   // w={"full"}
                   borderWidth="1px"
                   // borderRadius="lg"

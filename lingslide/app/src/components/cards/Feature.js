@@ -11,6 +11,7 @@ export const Card = ({
   isSelected,
   customPadding,
   role,
+  onClick,
 }) => {
   const { setSelected, isStudent } = useContext(ThemeContext);
 
@@ -24,7 +25,10 @@ export const Card = ({
       border={"1px solid white"}
       p={5}
       overflow="hidden"
-      onClick={() => setSelected(role)}
+      onClick={() => {
+        setSelected(role);
+        onClick();
+      }}
       _hover={{ bg: "rgba(255,255,255,0.1)" }}
       position={"relative"}
     >

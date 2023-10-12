@@ -22,7 +22,7 @@ const ListHeader = ({ children }) => {
   );
 };
 
-const SocialButton = ({ children, label, href }) => {
+const SocialButton = ({ children, label, href, target }) => {
   return (
     <chakra.button
       bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
@@ -31,6 +31,7 @@ const SocialButton = ({ children, label, href }) => {
       h={8}
       cursor={"pointer"}
       as={"a"}
+      target={target}
       href={href}
       display={"inline-flex"}
       alignItems={"center"}
@@ -52,47 +53,47 @@ export default function LargeWithAppLinksAndSocial() {
       <Container as={Stack} maxW={"6xl"} py={10}>
         <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
           <Stack align={"flex-start"}>
-            <ListHeader>Company</ListHeader>
+            <ListHeader>Lingslide</ListHeader>
             <Box as="a" href={"#"}>
-              About Us
+              Hakkında
             </Box>
             <Box as="a" href={"#"}>
               Blog
             </Box>
             <Box as="a" href={"#"}>
-              Careers
+              S.S.S.
             </Box>
             <Box as="a" href={"#"}>
-              Contact Us
-            </Box>
-          </Stack>
-
-          <Stack align={"flex-start"}>
-            <ListHeader>Support</ListHeader>
-            <Box as="a" href={"#"}>
-              Help Center
-            </Box>
-            <Box as="a" href={"#"}>
-              Safety Center
-            </Box>
-            <Box as="a" href={"#"}>
-              Community Guidelines
+              Ulaşım
             </Box>
           </Stack>
 
           <Stack align={"flex-start"}>
-            <ListHeader>Legal</ListHeader>
+            <ListHeader>Destek</ListHeader>
             <Box as="a" href={"#"}>
-              Cookies Policy
+              Yardım Merkezi
             </Box>
             <Box as="a" href={"#"}>
-              Privacy Policy
+              Güvenlik
             </Box>
             <Box as="a" href={"#"}>
-              Terms of Service
+              Topluluk Kuralları
+            </Box>
+          </Stack>
+
+          <Stack align={"flex-start"}>
+            <ListHeader>Kurallar</ListHeader>
+            <Box as="a" href={"#"}>
+              Çerez Politikası
             </Box>
             <Box as="a" href={"#"}>
-              Law Enforcement
+              Gizlilik Politikası
+            </Box>
+            <Box as="a" href={"#"}>
+              Hizmet Şartları
+            </Box>
+            <Box as="a" href={"#"}>
+              Hukuki İşlemler
             </Box>
           </Stack>
 
