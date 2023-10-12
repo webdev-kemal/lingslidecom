@@ -153,9 +153,12 @@ const Blogs = () => {
               bg="pink.400"
             ></Box>
 
-            <Flex align="center">
+            <Flex align="center" justifyContent="space-between" w="100%">
               <Text ms={3} mt={1} fontWeight={"700"}>
                 Güncelleme: 12.10.2023
+              </Text>
+              <Text me={3} mt={1} fontWeight={"700"}>
+                Lingslide Beta
               </Text>
             </Flex>
           </Box>
