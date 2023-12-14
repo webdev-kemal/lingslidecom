@@ -5,6 +5,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./views/HomePage";
 import Blogs from "./views/Blogs";
+import GPTDemo from "./views/GPTDemo";
 import WithSubnavigation from "./components/Navbar";
 import LargeWithAppLinksAndSocial from "./components/Footer";
 
@@ -38,6 +39,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/blogs" element={<Blogs />} />
+              <Route path="/demo" element={<GPTDemo />} />
             </Routes>
             {/* Footer */}
             <LargeWithAppLinksAndSocial />

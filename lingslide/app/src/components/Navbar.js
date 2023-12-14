@@ -295,12 +295,12 @@ const NAV_ITEMS = [
       {
         label: "Çalışma Ortamım",
         subLabel: "Notlarınızı özel alanınıza kaydedin",
-        href: "#",
+        href: "/demo",
       },
       {
         label: "Pratiğe Dökme",
         subLabel: "Kütüphanedeki kaynakları çekip değiştirin",
-        href: "#",
+        href: "/demo",
       },
     ],
   },
