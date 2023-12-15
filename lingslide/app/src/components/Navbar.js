@@ -306,7 +306,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Uygulama",
-    href: "#",
+    href: "/dictionary",
   },
   {
     label: "SSS",

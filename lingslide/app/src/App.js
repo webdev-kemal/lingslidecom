@@ -8,6 +8,8 @@ import Blogs from "./views/Blogs";
 import GPTDemo from "./views/GPTDemo";
 import WithSubnavigation from "./components/Navbar";
 import LargeWithAppLinksAndSocial from "./components/Footer";
+import WordView from "./views/WordView";
+import Dictionary from "./views/Dictionary";
 
 export const ThemeContext = createContext();
 // ahh
@@ -40,6 +42,8 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/demo" element={<GPTDemo />} />
+              <Route path="/dictionary" element={<Dictionary />} />
+              <Route path="/dictionary/:title" element={<WordView />} />
             </Routes>
             {/* Footer */}
             <LargeWithAppLinksAndSocial />

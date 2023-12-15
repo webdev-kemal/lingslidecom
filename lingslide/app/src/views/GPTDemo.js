@@ -18,43 +18,21 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import { BsCheck2All, BsArrowRight } from "react-icons/bs";
-import { Configuration, OpenAIApi } from "openai";
 
 const GPTDemo = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [formdata, setFormData] = useState({
-    language: "turkish",
-    message: "",
-  });
+
   const { theme } = useContext(ThemeContext);
 
   const [isDesktop] = useMediaQuery("(min-width: 600px)");
 
   const [selectedTab, setTab] = useState(0);
 
-  const openai = new OpenAIApi(configuration);
-
-  const submit = async () => {
-    const response = await client.chat.completions.create({
-      model: "gpt-3.5-turbo-1106",
-      messages: [
-        {
-          role: "user",
-          content: "Analyze the pros and cons of remote work vs. office work",
-        },
-      ],
-      temperature: 0.8,
-      max_tokens: 64,
-      top_p: 1,
-    });
-  };
-
   const sendReq = () => {
     console.log(userInput);
     // setLoading((prevState) => !prevState);
     setLoading(true);
-    submit();
   };
 
   const tabInfo = () => {
@@ -89,23 +67,7 @@ const GPTDemo = () => {
     if (selectedTab === 1) {
       return (
         <>
-          <Heading fontSize={"lg"} mb={2}>
-            Demans slayt oluşturma
-          </Heading>
-          <Text mb={5}>Text1</Text>
-
-          <Heading fontSize={"lg"} mb={2}>
-            İnteraktif öğeler ve quiz ekleme
-          </Heading>
-          <Text mb={5}>Text2</Text>
-
-          <Heading fontSize={"lg"} mb={2}>
-            Ödev sistemi ve Lingslide{" "}
-            <Text as="span" color="pink.400">
-              Insights
-            </Text>
-          </Heading>
-          <Text>Text3</Text>
+          <Text>Sample text</Text>
         </>
       );
     }
