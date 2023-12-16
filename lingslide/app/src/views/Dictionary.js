@@ -7,18 +7,21 @@ import {
   Button,
   Stack,
   Icon,
+  Select,
   createIcon,
   Flex,
   useMediaQuery,
   IconButton,
 } from "@chakra-ui/react";
-import { RxHamburgerMenu, RxTokens } from "react-icons/rx";
+import { RxHamburgerMenu, RxTokens, RxPlus } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
+import words from "../api/words";
 
 const Dictionary = () => {
   const navigate = useNavigate();
 
   const [grillView, toggleGrillView] = useState(false);
+  const [heading, setHeading] = useState("Choose a word");
   const [filterMethods, setFilterMethods] = useState([]);
 
   const getBackgroundColor = (wordType) => {
@@ -26,7 +29,7 @@ const Dictionary = () => {
       case "noun":
         return "green";
       case "verb":
-        return "blue";
+        return "linear-gradient(to top left, #000b86 0%, #0015ff 100%)";
       case "adj":
         return "orange";
       case "adv":
@@ -39,90 +42,8 @@ const Dictionary = () => {
         return "gray"; // Default color for unknown types
     }
   };
-
-  const arrayOfWords = [
-    {
-      title: "adelgazar",
-      ranking: "421",
-      phrases: [
-        "se volvio para adelgazar un poco de mas",
-        "ademas, se decidio a adelgazar sin ambargo",
-      ],
-      synonyms: ["perder de poid", "minorar"],
-      type: "verb",
-      verb_participe: "adelgazado",
-      verb_group: "regular",
-    },
-    {
-      title: "arreglar",
-      ranking: "321",
-      phrases: ["mi correo puedes arreglar", "el coche se necesita arreglar"],
-      synonyms: ["fijar", "corregir"],
-      type: "verb",
-      verb_participe: "arreglado",
-      verb_group: "regular",
-    },
-    {
-      title: "ver",
-      ranking: "17",
-      phrases: [
-        "estaba mirando desde la ventana",
-        "mire sus ojos calientemente",
-      ],
-      synonyms: ["mirar", "minorar"],
-      type: "conj",
-      verb_participe: "visto",
-      verb_group: "irregular",
-    },
-    {
-      title: "borrar",
-      ranking: "217",
-      phrases: [
-        "estaba mirando desde la ventana",
-        "mire sus ojos calientemente",
-      ],
-      synonyms: ["mirar", "minorar"],
-      type: "verb",
-      verb_participe: "adelgazado",
-      verb_group: "regular",
-    },
-    {
-      title: "casar",
-      ranking: "87",
-      phrases: [
-        "estaba mirando desde la ventana",
-        "mire sus ojos calientemente",
-      ],
-      synonyms: ["mirar", "minorar"],
-      type: "adj",
-      verb_participe: "casado",
-      verb_groups: ["regular", "reflexivo", "modal", "transitivo"],
-    },
-    {
-      title: "demasiada",
-      ranking: "147",
-      phrases: [
-        "estaba mirando desde la ventana",
-        "mire sus ojos calientemente",
-      ],
-      synonyms: ["mirar", "minorar"],
-      type: "conj",
-      verb_participe: "",
-      verb_group: "",
-    },
-    {
-      title: "cuidamente",
-      ranking: "147",
-      phrases: [
-        "estaba mirando desde la ventana",
-        "mire sus ojos calientemente",
-      ],
-      synonyms: ["mirar", "minorar"],
-      type: "adv",
-      verb_participe: "",
-      verb_group: "",
-    },
-  ];
+  //recommendations prop: we highly recommend to learn these words to be able to use the verb <verb>
+  const arrayOfWords = words;
 
   //   const filteredWords = filterMethod
   //     ? arrayOfWords.filter((word) => word.type === filterMethod)
@@ -136,10 +57,28 @@ const Dictionary = () => {
     }
   };
 
-  const CardElement = ({ title, ranking, phrases, synonyms, type }) => {
+  const CardElement = ({
+    title,
+    ranking,
+    phrases,
+    synonyms,
+    type,
+    headingFunc,
+  }) => {
     const backgroundColor = getBackgroundColor(type);
     return (
       <Box
+        _hover={{
+          transform: "translateX(11px)",
+          filter: "brightness(0.8)",
+          transition: "0.2s",
+          cursor: "pointer",
+        }}
+        transition={"0.2s"}
+        // onMouseOver={headingFunc}
+        onMouseOver={() => {
+          setHeading(`${title}`);
+        }}
         m={1}
         display="inline"
         p={"4px"}
@@ -156,124 +95,193 @@ const Dictionary = () => {
     );
   };
 
-  return (
-    <Container
-      color={"white"}
-      fontFamily={"League Spartan"}
-      minW="60%"
-      mx="auto"
-      minH="98vh"
-    >
-      <Stack as={Box} spacing={{ base: 8, md: 8 }} py={{ base: 20, md: 28 }}>
-        <Box>
-          <Heading>My Dictionary</Heading>
-          <Box display="flex" flexDirection="row" alignItems="center">
-            <IconButton
-              icon={<RxTokens color="white" />}
-              onClick={() => {
-                // toggleGrillView((prevState) => !prevState);
-                toggleGrillView(false);
-              }}
-              variant="unstyled" // This removes the background
-            />
-            <IconButton
-              icon={<RxHamburgerMenu color="white" />}
-              onClick={() => {
-                toggleGrillView(true);
-              }}
-              variant="unstyled" // This removes the background
-              left="-17px"
-            />
-            <Text me={3}>göre filtrele:</Text>
-            <label style={{ marginRight: "9px" }}>
-              <input
-                type="checkbox"
-                checked={filterMethods.includes("name")}
-                onChange={() => toggleFilter("name")}
-              />
-              İsim
-            </label>
-            <label style={{ marginRight: "9px" }}>
-              <input
-                type="checkbox"
-                checked={filterMethods.includes("verb")}
-                onChange={() => toggleFilter("verb")}
-              />
-              Fiil
-            </label>
-            <label style={{ marginRight: "9px" }}>
-              <input
-                type="checkbox"
-                checked={filterMethods.includes("adj")}
-                onChange={() => toggleFilter("adj")}
-              />
-              Sıfat
-            </label>
-            <label style={{ marginRight: "9px" }}>
-              <input
-                type="checkbox"
-                checked={filterMethods.includes("adv")}
-                onChange={() => toggleFilter("adv")}
-              />
-              Zarf
-            </label>
-            <label style={{ marginRight: "9px" }}>
-              <input
-                type="checkbox"
-                checked={filterMethods.includes("conj")}
-                onChange={() => toggleFilter("conj")}
-              />
-              Edat
-            </label>
-          </Box>
-        </Box>
-        {grillView ? (
-          <Stack spacing={0}>
-            {filterMethods.length > 0
-              ? arrayOfWords
-                  .filter((word) => filterMethods.includes(word.type))
-                  .map((word) => (
-                    <CardElement
-                      key={word.title}
-                      title={word.title}
-                      ranking={word.ranking}
-                      type={word.type}
-                    />
-                  ))
-              : arrayOfWords.map((word) => (
-                  <CardElement
-                    key={word.title}
-                    title={word.title}
-                    ranking={word.ranking}
-                    type={word.type}
-                  />
-                ))}
-          </Stack>
-        ) : (
-          <Box>
-            {filterMethods.length > 0
-              ? arrayOfWords
-                  .filter((word) => filterMethods.includes(word.type))
-                  .map((word) => (
-                    <CardElement
-                      key={word.title}
-                      title={word.title}
-                      ranking={word.ranking}
-                      type={word.type}
-                    />
-                  ))
-              : arrayOfWords.map((word) => (
-                  <CardElement
-                    key={word.title}
-                    title={word.title}
-                    ranking={word.ranking}
-                    type={word.type}
-                  />
-                ))}
-          </Box>
+  const AddCardElement = ({ headingFunc }) => {
+    return (
+      <Box
+        _hover={{
+          transform: "translateX(11px)",
+          filter: "brightness(0.8)",
+          transition: "0.2s",
+          cursor: "pointer",
+        }}
+        transition={"0.2s"}
+        onMouseOver={headingFunc}
+        m={1}
+        border={"solid white 1px"}
+        display="inline"
+        p={"4px"}
+        py={"8px"}
+        rounded={"md"}
+        bg={"transparent"}
+        color={"white"}
+        onClick={() => {
+          // navigate(`./${title}`);
+        }}
+      >
+        yeni kelime ekle{" "}
+        {grillView && (
+          <Icon
+            as={RxPlus}
+            pos="relative"
+            left="36%"
+            transform={"translate(0%,15%)"}
+            variant="unstyled"
+          />
         )}
-      </Stack>
-    </Container>
+      </Box>
+    );
+  };
+
+  return (
+    <>
+      <Heading
+        color={"gray.600"}
+        pos="fixed"
+        top={"20%"}
+        left={"50%"} // Center horizontally
+        transform={"translate(-50%, -50%)"}
+        fontSize={"170px"}
+        zIndex={"-10"}
+      >
+        >{heading}
+      </Heading>
+      <Container
+        color={"white"}
+        fontFamily={"League Spartan"}
+        minW="60%"
+        mx="auto"
+        minH="98vh"
+      >
+        <Stack as={Box} spacing={{ base: 8, md: 8 }} py={{ base: 20, md: 28 }}>
+          <Box>
+            <Heading>My Dictionary</Heading>
+            <Box display="flex" flexDirection="row" alignItems="center">
+              <IconButton
+                icon={<RxTokens color="white" />}
+                onClick={() => {
+                  // toggleGrillView((prevState) => !prevState);
+                  toggleGrillView(false);
+                }}
+                variant="unstyled" // This removes the background
+              />
+              <IconButton
+                icon={<RxHamburgerMenu color="white" />}
+                onClick={() => {
+                  toggleGrillView(true);
+                }}
+                variant="unstyled" // This removes the background
+                left="-17px"
+              />
+              <Text me={3}>göre filtrele:</Text>
+              <label style={{ marginRight: "9px" }}>
+                <input
+                  type="checkbox"
+                  checked={filterMethods.includes("name")}
+                  onChange={() => toggleFilter("name")}
+                />
+                İsim
+              </label>
+              <label style={{ marginRight: "9px" }}>
+                <input
+                  type="checkbox"
+                  checked={filterMethods.includes("verb")}
+                  onChange={() => toggleFilter("verb")}
+                />
+                Fiil
+              </label>
+              <label style={{ marginRight: "9px" }}>
+                <input
+                  type="checkbox"
+                  checked={filterMethods.includes("adj")}
+                  onChange={() => toggleFilter("adj")}
+                />
+                Sıfat
+              </label>
+              <label style={{ marginRight: "9px" }}>
+                <input
+                  type="checkbox"
+                  checked={filterMethods.includes("adv")}
+                  onChange={() => toggleFilter("adv")}
+                />
+                Zarf
+              </label>
+              <label style={{ marginRight: "9px" }}>
+                <input
+                  type="checkbox"
+                  checked={filterMethods.includes("conj")}
+                  onChange={() => toggleFilter("conj")}
+                />
+                Edat
+              </label>
+              <Text ms={3} me={3}>
+                göre sırala:
+              </Text>
+              <Select size="sm" maxW={"150px"} bg="#13163C">
+                <option
+                  style={{ backgroundColor: "#13163C" }}
+                  value="Alfabetik"
+                >
+                  Alfabetik
+                </option>
+                <option style={{ backgroundColor: "#13163C" }} value="newtoold">
+                  Yeniden eskiye
+                </option>
+                <option style={{ backgroundColor: "#13163C" }} value="oldtonew">
+                  Eskiden yeniye
+                </option>
+              </Select>
+            </Box>
+          </Box>
+          {grillView ? (
+            <Stack spacing={0}>
+              <AddCardElement />
+              {filterMethods.length > 0
+                ? arrayOfWords
+                    .filter((word) => filterMethods.includes(word.type))
+                    .map((word) => (
+                      <CardElement
+                        key={word.title}
+                        title={word.title}
+                        ranking={word.ranking}
+                        type={word.type}
+                      />
+                    ))
+                : arrayOfWords.map((word) => (
+                    <CardElement
+                      key={word.title}
+                      title={word.title}
+                      ranking={word.ranking}
+                      type={word.type}
+                    />
+                  ))}
+            </Stack>
+          ) : (
+            <Box>
+              <AddCardElement />
+              {filterMethods.length > 0
+                ? arrayOfWords
+                    .filter((word) => filterMethods.includes(word.type))
+                    .map((word) => (
+                      <CardElement
+                        key={word.title}
+                        title={word.title}
+                        ranking={word.ranking}
+                        type={word.type}
+                      />
+                    ))
+                : arrayOfWords.map((word) => (
+                    <CardElement
+                      key={word.title}
+                      title={word.title}
+                      ranking={word.ranking}
+                      type={word.type}
+                    />
+                  ))}
+            </Box>
+          )}
+        </Stack>
+      </Container>
+    </>
   );
 };
 
