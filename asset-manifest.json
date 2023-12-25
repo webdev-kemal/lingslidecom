@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/lingslidecom/static/css/main.67e6a1c2.css",
-    "main.js": "/lingslidecom/static/js/main.e6f80739.js",
+    "main.js": "/lingslidecom/static/js/main.8b589a0f.js",
     "static/js/787.cda612ba.chunk.js": "/lingslidecom/static/js/787.cda612ba.chunk.js",
     "static/media/logo.svg": "/lingslidecom/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/lingslidecom/index.html",
     "main.67e6a1c2.css.map": "/lingslidecom/static/css/main.67e6a1c2.css.map",
-    "main.e6f80739.js.map": "/lingslidecom/static/js/main.e6f80739.js.map",
+    "main.8b589a0f.js.map": "/lingslidecom/static/js/main.8b589a0f.js.map",
     "787.cda612ba.chunk.js.map": "/lingslidecom/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.67e6a1c2.css",
-    "static/js/main.e6f80739.js"
+    "static/js/main.8b589a0f.js"
   ]
 }
