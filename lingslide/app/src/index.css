@@ -12,3 +12,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.testplace {
+  background-color: radial-gradient(#0015ff, #000b86);
+}

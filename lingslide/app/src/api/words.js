@@ -20,6 +20,32 @@ const words = [
     gender: "feminine",
   },
   {
+    title: "manger",
+    ranking: 10, // Replace with the appropriate numerical ranking
+    phrases: [
+      "Il est important de bien manger pour rester en bonne santé.",
+      "Nous aimons manger en famille le dimanche.",
+    ],
+    synonyms: ["dévorer", "ingérer"],
+    antonyms: ["jeûner"],
+    concurrences: ["repas", "alimentation"],
+    meanings: [
+      "Introduire de la nourriture dans la bouche, mastiquer, et avaler.",
+    ],
+    in_english: "To eat",
+    register_difficulty: "familiar, any",
+    type: "verb",
+    verb_participe: "mangé",
+    verb_group: "irregular",
+    prefix: "null", // Assuming no prefix
+    suffix: "null", // Assuming no suffix
+    gender: "null", // Assuming no gender
+    idioms: [
+      "Manger comme un oiseau",
+      "On ne peut pas manger son gâteau et l'avoir.",
+    ],
+  },
+  {
     title: "arreglar",
     ranking: "321",
     phrases: ["mi correo puedes arreglar", "el coche se necesita arreglar"],

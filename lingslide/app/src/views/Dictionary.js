@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { RxHamburgerMenu, RxTokens, RxPlus } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
-import words from "../api/words";
+import words from "../api/words_advanced";
 
 const Dictionary = () => {
   const navigate = useNavigate();
