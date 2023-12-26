@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 import { BiLogoTiktok } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 // import { AppStoreBadge } from "#/components/AppStoreBadge";
 // import { PlayStoreBadge } from "#/components/PlayStoreBadge";
@@ -48,6 +49,7 @@ const SocialButton = ({ children, label, href, target }) => {
 };
 
 export default function LargeWithAppLinksAndSocial() {
+  const navigate = useNavigate();
   return (
     <Box bg={"#1a1e53"} color={"white"} mt={"300px"}>
       <Container as={Stack} maxW={"6xl"} py={10}>
@@ -57,14 +59,17 @@ export default function LargeWithAppLinksAndSocial() {
             <Box as="a" href={"#"}>
               Hakkında
             </Box>
-            <Box as="a" href={"#"}>
+            <Box as="a" href={"/#/blogs"}>
               Blog
             </Box>
             <Box as="a" href={"#"}>
               S.S.S.
             </Box>
             <Box as="a" href={"#"}>
-              Ulaşım
+              Yazılım Çözümleri
+            </Box>
+            <Box as="a" href={"/#/jobs"}>
+              Bizimle Çalışın
             </Box>
           </Stack>
 
@@ -76,8 +81,11 @@ export default function LargeWithAppLinksAndSocial() {
             <Box as="a" href={"#"}>
               Güvenlik
             </Box>
-            <Box as="a" href={"#"}>
+            {/* <Box as="a" href={"#"}>
               Topluluk Kuralları
+            </Box> */}
+            <Box as="a" href={"#"}>
+              Ulaşım
             </Box>
           </Stack>
 
@@ -92,9 +100,9 @@ export default function LargeWithAppLinksAndSocial() {
             <Box as="a" href={"#"}>
               Hizmet Şartları
             </Box>
-            <Box as="a" href={"#"}>
+            {/* <Box as="a" href={"#"}>
               Hukuki İşlemler
-            </Box>
+            </Box> */}
           </Stack>
 
           <Stack align={"flex-start"}>

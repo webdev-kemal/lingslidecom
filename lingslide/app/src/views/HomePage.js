@@ -9,6 +9,7 @@ import {
   createIcon,
   Flex,
   useMediaQuery,
+  Select,
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../App";
@@ -17,11 +18,15 @@ import { Card } from "../components/cards/Feature";
 import CaptionCarousel from "../components/carousels/Home";
 import App from "../components/forms/Home";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
+import { Context } from "../components/Wrapper";
 
 function HomePage() {
   const { theme, isStudent, setSelected } = useContext(ThemeContext);
   const [isLarge] = useMediaQuery("(min-width: 600px)");
   const navigate = useNavigate();
+
+  const context = useContext(Context);
 
   const handleScrollToForm = () => {
     const element = document.querySelector("#secondpage");
@@ -50,13 +55,38 @@ function HomePage() {
 
   return (
     <>
+      <Box
+        pos={"relative"}
+        ml={"auto"} // Use ml={"auto"} to push it to the right
+        top={"0px"}
+      >
+        <Select
+          color={"white"}
+          size="sm"
+          border={"none"}
+          maxW={"65px"}
+          bg="transparent"
+          value={context.locale}
+          onChange={context.selectLanguage}
+        >
+          <option style={{ backgroundColor: "#13163C" }} value="tr">
+            TR
+          </option>
+          <option style={{ backgroundColor: "#13163C" }} value="en">
+            EN
+          </option>
+          <option style={{ backgroundColor: "#13163C" }} value="fr">
+            FR
+          </option>
+        </Select>
+      </Box>
       <Container
         color={"white"}
         fontFamily={"League Spartan"}
         minW="60%"
         mx="auto"
         minH="98vh"
-        bg={theme === "dark" ? "#13163c" : "#13163c"}
+        // bg={theme === "dark" ? "#13163c" : "#13163c"}
       >
         <Stack
           // mx={{ base: "4%", md: "23%" }}
@@ -71,13 +101,13 @@ function HomePage() {
             fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
           >
-            Yabancı dil öğretmeni misiniz? <br />
+            <FormattedMessage id="app.header" /> <br />
             <Text
               as={"span"}
               //  color={"#ffc26a"}
               color={"pink.400"}
             >
-              doğru yerdesiniz.
+              <FormattedMessage id="app.header2" />
             </Text>
           </Heading>
           <Text color={"white"}>
@@ -111,7 +141,7 @@ function HomePage() {
             <Button
               variant={"link"}
               onClick={() => {
-                navigate("/blogs");
+                navigate("/#/blogs");
               }}
               colorScheme={"blue"}
               size={"sm"}

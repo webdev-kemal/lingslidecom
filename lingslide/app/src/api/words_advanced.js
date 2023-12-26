@@ -20,32 +20,7 @@ const words = [
     gender: "feminine",
     expressions: ["a", "b"],
   },
-  {
-    title: "pétulance",
-    ranking: 800, // Replace with the appropriate numerical ranking
-    phrases: [
-      "Sa pétulance était contagieuse; elle égayait toute la pièce.",
-      "Il a montré une pétulance enfantine lors de la fête.",
-    ],
-    synonyms: ["entrain", "vivacité"],
-    antonyms: ["apathie", "indifférence"],
-    concurrences: ["énergie débordante", "enthousiasme"],
-    meanings: [
-      "Caractère vif, enjoué, souvent associé à une énergie débordante et à un enthousiasme enfantin.",
-    ],
-    in_english: "Liveliness, exuberance",
-    register_difficulty: "formal, literary",
-    type: "noun",
-    verb_participe: "null", // Assuming it's a noun
-    verb_group: "null", // Assuming it's a noun
-    prefix: "null", // Assuming no prefix
-    suffix: "null", // Assuming no suffix
-    gender: "null", // Assuming no gender
-    idioms: [
-      "Sa pétulance illuminait la pièce.",
-      "On admire sa pétulance contagieuse.",
-    ],
-  },
+
   {
     title: "tremper",
     ranking: 150, // Replace with the appropriate numerical ranking

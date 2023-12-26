@@ -1,0 +1,14 @@
+{
+  "app.header": "Yabancı dil öğretmeni misiniz?",
+  "app.header2": "doğru yerdesiniz.",
+  "app.content": "تعلم React",
+  "app.random": "I am dumber af",
+  "app.channel.plug": "يقدم لك البرنامج التعليمي {blogName}",
+  "app.plural": "{amount, plural, =0 {no languages} one {# one language} few {# several languages} many {# lots of languages} other {# wrong fromat}}",
+
+  "nav.blogs": "Bloglarımız",
+  "nav.ai": "Yapay Zeka",
+  "nav.dict": "Sözlüğüm",
+  "nav.google": "Google ile giriş yap",
+  "nav.support": "Destek ol"
+}

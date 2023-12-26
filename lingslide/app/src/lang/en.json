@@ -1,0 +1,15 @@
+{
+  "app.insertion": "Edit<code>{fileName}</code> js and save to reload",
+  "app.header": "Are you a language teacher?",
+  "app.header2": "here's your spot.",
+  "app.random": "I am dumb af",
+  "app.content": "Learn React",
+  "app.channel.plug": "Tutorial brought to you by {blogName}",
+  "app.plural": "{amount, plural, =0 {no languages} one {# one language} few {# several languages} many {# lots of languages} other {# wrong fromat}}",
+
+  "nav.blogs": "Blogs",
+  "nav.ai": "AI Tools",
+  "nav.dict": "Dictionary",
+  "nav.google": "Login with Google",
+  "nav.support": "Donations"
+}

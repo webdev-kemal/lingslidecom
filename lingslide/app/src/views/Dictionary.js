@@ -21,15 +21,16 @@ const Dictionary = () => {
   const navigate = useNavigate();
 
   const [grillView, toggleGrillView] = useState(false);
-  const [heading, setHeading] = useState("Choose a word");
+  const [heading, setHeading] = useState("sözlüğüm");
   const [filterMethods, setFilterMethods] = useState([]);
 
   const getBackgroundColor = (wordType) => {
     switch (wordType) {
       case "noun":
-        return "green";
+        return "#D53F8C";
       case "verb":
-        return "linear-gradient(to top left, #000b86 0%, #0015ff 100%)";
+        return "#0015ff";
+      // return "linear-gradient(to top left, #000b86 0%, #0015ff 100%)";
       case "adj":
         return "orange";
       case "adv":
@@ -176,8 +177,8 @@ const Dictionary = () => {
               <label style={{ marginRight: "9px" }}>
                 <input
                   type="checkbox"
-                  checked={filterMethods.includes("name")}
-                  onChange={() => toggleFilter("name")}
+                  checked={filterMethods.includes("noun")}
+                  onChange={() => toggleFilter("noun")}
                 />
                 İsim
               </label>

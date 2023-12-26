@@ -20,9 +20,10 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useHistory } from "react-router-dom";
 import React, { useContext } from "react";
 import { ThemeContext } from "../App";
+import { FormattedMessage } from "react-intl";
 
 export default function WithSubnavigation() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -62,13 +63,12 @@ export default function WithSubnavigation() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Text
+            as={"a"}
+            href={"#"}
             mt="6px"
             ms="6px"
             cursor={"pointer"}
             _hover={{ transition: ".2s", transform: "scale(1.05)" }}
-            onClick={() => {
-              navigate("/");
-            }}
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"League Spartan"}
             fontWeight="bold"
@@ -96,7 +96,7 @@ export default function WithSubnavigation() {
             variant={"link"}
             href={"#"}
           >
-            Google ile giriş yap
+            <FormattedMessage id="nav.google" />
           </Button>
           <Button
             me="6px"
@@ -111,7 +111,7 @@ export default function WithSubnavigation() {
               bg: "pink.600",
             }}
           >
-            Destek Ol
+            <FormattedMessage id="nav.support" />
           </Button>
         </Stack>
       </Flex>
@@ -275,12 +275,12 @@ const MobileNavItem = ({ label, children, href }) => {
 
 const NAV_ITEMS = [
   {
-    label: "Öğretmenler",
+    label: <FormattedMessage id="nav.blogs" />,
     children: [
       {
         label: "Yabancı Dil Blogları",
         subLabel: "Ders anlatımlarınız sayfanızda gözüksün",
-        href: "/blogs",
+        href: "/#/blogs",
       },
       {
         label: "İnteraktif Slaytlar",
@@ -290,26 +290,26 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Öğrenciler",
+    label: <FormattedMessage id="nav.ai" />,
     children: [
       {
         label: "Çalışma Ortamım",
         subLabel: "Notlarınızı özel alanınıza kaydedin",
-        href: "/demo",
+        href: "/#/demo",
       },
       {
         label: "Pratiğe Dökme",
         subLabel: "Kütüphanedeki kaynakları çekip değiştirin",
-        href: "/demo",
+        href: "/#/demo",
       },
     ],
   },
   {
-    label: "Uygulama",
-    href: "/dictionary",
+    label: <FormattedMessage id="nav.dict" />,
+    href: "/#/dictionary",
   },
-  {
-    label: "SSS",
-    href: "#",
-  },
+  // {
+  //   label: "SSS",
+  //   href: "#",
+  // },
 ];

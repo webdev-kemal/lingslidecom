@@ -121,12 +121,13 @@ const Blogs = () => {
   return (
     <div>
       {" "}
+      {/* language switcher */}
       <Container
         color={"white"}
         fontFamily={"League Spartan"}
         minW="100%"
         minH="98vh"
-        bg={theme === "dark" ? "#13163c" : "#13163c"}
+        // bg={theme === "dark" ? "#13163c" : "#13163c"}
       >
         <Stack
           mx={{ base: "4%", md: "23%" }}
