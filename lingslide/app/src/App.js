@@ -11,8 +11,11 @@ import LargeWithAppLinksAndSocial from "./components/Footer";
 import WordView from "./views/WordView";
 import Dictionary from "./views/Dictionary";
 import Positions from "./views/Positions";
+import Login from "./views/Login";
 import { IntlProvider } from "react-intl";
 import Wrapper from "./components/Wrapper";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
 
 export const ThemeContext = createContext();
 // ahh
@@ -33,33 +36,38 @@ const ThemeProvider = ({ children }) => {
   );
 };
 
+const store = configureStore();
+
 function App() {
   return (
     <ChakraProvider>
-      <ThemeProvider>
-        <div id={theme}>
-          <Wrapper>
-            <Router>
-              {/* Navbar */}
-              <WithSubnavigation />
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/blogs" element={<Blogs />} />
-                <Route path="/demo" element={<GPTDemo />} />
-                <Route path="/dictionary" element={<Dictionary />} />
-                <Route path="/dictionary/:title" element={<WordView />} />
-                <Route path="/jobs" element={<Positions />} />
-                {/* <Route path="/donate" element={<Dictionary />} />
+      <Provider store={store}>
+        <ThemeProvider>
+          <div id={theme}>
+            <Wrapper>
+              <Router>
+                {/* Navbar */}
+                <WithSubnavigation />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/blogs" element={<Blogs />} />
+                  <Route path="/demo" element={<GPTDemo />} />
+                  <Route path="/dictionary" element={<Dictionary />} />
+                  <Route path="/dictionary/:title" element={<WordView />} />
+                  <Route path="/jobs" element={<Positions />} />
+                  <Route path="/register" element={<Login />} />
+                  {/* <Route path="/donate" element={<Dictionary />} />
                 <Route path="/login" element={<Dictionary />} />
                 <Route path="/tools" element={<Dictionary />} />
                 <Route path="/hizmetlerimiz" element={<Dictionary />} /> */}
-              </Routes>
-              {/* Footer */}
-              <LargeWithAppLinksAndSocial />
-            </Router>
-          </Wrapper>
-        </div>
-      </ThemeProvider>
+                </Routes>
+                {/* Footer */}
+                <LargeWithAppLinksAndSocial />
+              </Router>
+            </Wrapper>
+          </div>
+        </ThemeProvider>
+      </Provider>
     </ChakraProvider>
   );
 }
