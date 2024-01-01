@@ -50,21 +50,21 @@ const Login = () => {
         as={Box}
         w={{ base: "90%", md: "60%" }}
         color={"white"}
-        spacing={{ base: 4, md: 4 }}
+        spacing={{ base: 4, lg: 4 }}
         py={{ base: 20, md: 28 }}
       >
         <Flex mb={3}>
           <Heading
-            size={{ base: "lg", md: "2xl" }}
-            mr={{ base: 2, md: 3 }}
+            size={{ base: "lg", lg: "2xl" }}
+            mr={{ base: 2, lg: 3 }}
             color={colorMap[words[index]] || "white"}
             transition={"0.2s"}
           >
             Lingslide
           </Heading>
           <Heading
-            size={{ base: "lg", md: "2xl" }}
-            mr={{ base: 2, md: 3 }}
+            size={{ base: "lg", lg: "2xl" }}
+            mr={{ base: 2, lg: 3 }}
             color={"white"}
           >
             for
@@ -78,7 +78,7 @@ const Login = () => {
               exit={{ opacity: 0, y: 50 }}
               transition={{ duration: 0.5 }}
             >
-              <Heading size={{ base: "lg", md: "2xl" }} color={"white"}>
+              <Heading size={{ base: "lg", lg: "2xl" }} color={"white"}>
                 {words[index]}
               </Heading>
             </motion.div>

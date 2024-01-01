@@ -9,6 +9,7 @@ import {
   Box,
   Stack,
   Container,
+  Spinner,
 } from "@chakra-ui/react";
 import axios from "axios";
 // import { useFormik } from "formik";
@@ -20,6 +21,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState([]);
+  const [userDetails, setUserDetails] = useState({});
 
   const dispatch = useDispatch();
   const history = useNavigate();
@@ -29,13 +31,13 @@ const LoginForm = () => {
   const userLogin = useSelector((state) => state.user);
   const { loading, error, userInfo } = userLogin;
 
-  //   useEffect(() => {
-  //     if (userInfo) {
-  //       console.log("lmfao");
-  //       console.log(userInfo);
-  //       history(redirect);
-  //     }
-  //   }, [history, userInfo, redirect]);
+  useEffect(() => {
+    if (userInfo) {
+      console.log(userInfo.email);
+      history(redirect);
+      // console.log("decodedToken:", userDetails);
+    }
+  }, [history, userInfo, redirect]);
 
   //   const config = {
   //     headers: {
@@ -78,7 +80,6 @@ const LoginForm = () => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log("31");
         dispatch(login(email, password));
       }}
     >
@@ -105,8 +106,24 @@ const LoginForm = () => {
         onChange={(e) => setPassword(e.target.value)}
         mb={2}
       />
-      <Button type="submit" variant="outline" colorScheme="teal.200" mt={4}>
-        Giriş Yap
+      <Button
+        type="submit"
+        minW="130px"
+        variant="outline"
+        colorScheme="teal.200"
+        mt={4}
+      >
+        {loading ? (
+          <Spinner
+            thickness="2px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="red.500"
+            size="md"
+          />
+        ) : (
+          "Giriş Yap"
+        )}
       </Button>
     </form>
   );

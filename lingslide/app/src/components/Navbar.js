@@ -24,11 +24,18 @@ import { useNavigate, useHistory } from "react-router-dom";
 import React, { useContext } from "react";
 import { ThemeContext } from "../App";
 import { FormattedMessage } from "react-intl";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/user";
 
 export default function WithSubnavigation() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { isOpen, onToggle } = useDisclosure();
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.user);
+  const { loading, error, userInfo } = userLogin;
 
   return (
     <Box>
@@ -95,8 +102,16 @@ export default function WithSubnavigation() {
             fontWeight={400}
             variant={"link"}
             href={"#"}
+            onClick={(e) => {
+              e.preventDefault();
+              if (userInfo == null) {
+                navigate("/register");
+              } else {
+                dispatch(logout());
+              }
+            }}
           >
-            <FormattedMessage id="nav.google" />
+            {userInfo ? userInfo.email : <FormattedMessage id="nav.google" />}
           </Button>
           <Button
             me="6px"
