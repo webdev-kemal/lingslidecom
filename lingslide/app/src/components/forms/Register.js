@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 // import { register } from "../../actions/user";
 // import { useDispatch, useSelector } from "react-redux";
+// import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
 // import { useFormik } from "formik";
 
 const RegisterForm = () => {
@@ -33,7 +34,7 @@ const RegisterForm = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/register/",
+        "http://127.0.0.1:8000/auth/register/",
         {
           email,
           password,
@@ -58,49 +59,34 @@ const RegisterForm = () => {
   };
 
   return (
-    <Container
-      color={"white"}
-      fontFamily={"League Spartan"}
-      minW="60%"
-      mx="auto"
-      minH="98vh"
-    >
-      <Stack
-        as={Box}
-        color={"white"}
-        spacing={{ base: 4, md: 4 }}
-        py={{ base: 20, md: 28 }}
-      >
-        <form onSubmit={handleRegister}>
-          {errorMessages.length > 0 && (
-            <Box mt={4}>
-              {errorMessages.map((error, index) => (
-                <Text key={index} color="red.500">
-                  {error}
-                </Text>
-              ))}
-            </Box>
-          )}
-          <FormLabel>Email</FormLabel>
-          <Input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            mb={4}
-          />
-          <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            mb={2}
-          />
-          <Button type="submit" variant="outline" colorScheme="teal.200" mt={4}>
-            Register
-          </Button>
-        </form>
-      </Stack>
-    </Container>
+    <form onSubmit={handleRegister}>
+      {errorMessages.length > 0 && (
+        <Box mt={4}>
+          {errorMessages.map((error, index) => (
+            <Text key={index} color="red.500">
+              {error}
+            </Text>
+          ))}
+        </Box>
+      )}
+      <FormLabel>Email</FormLabel>
+      <Input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        mb={4}
+      />
+      <FormLabel>Password</FormLabel>
+      <Input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        mb={2}
+      />
+      <Button type="submit" variant="outline" colorScheme="teal.200" mt={4}>
+        Register
+      </Button>
+    </form>
   );
 };
 

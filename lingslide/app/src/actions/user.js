@@ -31,8 +31,8 @@ export const login = (email, password) => async (dispatch) => {
     // const response = await axios.post( ... );
     // const data = response.data;
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/user/login`,
-      { username: email, password: password },
+      `http://127.0.0.1:8000/auth/login/`,
+      { email, password },
       config
     );
     dispatch({
@@ -40,7 +40,8 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
-    console.log(`data is: ${data}`);
+    // console.log(`data is: ${data}`);
+    console.log(data);
   } catch (error) {
     console.log(error);
     dispatch({
@@ -75,8 +76,8 @@ export const register = (name, email, password) => async (dispatch) => {
     // const response = await axios.post( ... );
     // const data = response.data;
     const { data } = await axios.post(
-      `http://127.0.0.1:8000/api/user/register`,
-      { name: name, email: email, password: password },
+      `http://127.0.0.1:8000/auth/register/`,
+      { email: email, password: password },
       config
     );
 
@@ -101,47 +102,47 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: USER_DETAILS_REQUEST,
-    });
+// export const getUserDetails = (id) => async (dispatch, getState) => {
+//   try {
+//     dispatch({
+//       type: USER_DETAILS_REQUEST,
+//     });
 
-    // const {
-    //   user: { userInfo },
-    // } = getState();
-    const user = getState().userDetails;
+//     // const {
+//     //   user: { userInfo },
+//     // } = getState();
+//     const user = getState().userDetails;
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    };
+//     const config = {
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${userInfo.token}`,
+//       },
+//     };
 
-    const { data } = await axios.get(
-      // `http://127.0.0.1:8000/api/user/home/${id}`,
-      `http://127.0.0.1:8000/api/user/profile/`,
+//     const { data } = await axios.get(
+//       // `http://127.0.0.1:8000/api/user/home/${id}`,
+//       `http://127.0.0.1:8000/api/user/profile/`,
 
-      config
-    );
+//       config
+//     );
 
-    dispatch({
-      type: USER_DETAILS_SUCCESS,
-      payload: data,
-    });
+//     dispatch({
+//       type: USER_DETAILS_SUCCESS,
+//       payload: data,
+//     });
 
-    // console.log(JSON.stringify(data));
-  } catch (error) {
-    dispatch({
-      type: USER_DETAILS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+//     // console.log(JSON.stringify(data));
+//   } catch (error) {
+//     dispatch({
+//       type: USER_DETAILS_FAIL,
+//       payload:
+//         error.response && error.response.data.message
+//           ? error.response.data.message
+//           : error.message,
+//     });
+//   }
+// };
 
 export const updateUser = (user) => async (dispatch, getState) => {
   try {
