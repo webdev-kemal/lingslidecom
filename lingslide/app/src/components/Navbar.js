@@ -13,6 +13,10 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -26,6 +30,7 @@ import { ThemeContext } from "../App";
 import { FormattedMessage } from "react-intl";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/user";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 export default function WithSubnavigation() {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -107,11 +112,35 @@ export default function WithSubnavigation() {
               if (userInfo == null) {
                 navigate("/register");
               } else {
-                dispatch(logout());
+                return;
+                // dispatch(logout());
               }
             }}
           >
-            {userInfo ? userInfo.email : <FormattedMessage id="nav.google" />}
+            {userInfo ? (
+              <Menu>
+                <MenuButton rightIcon={<ChevronDownIcon />}>
+                  <Flex justifyContent={"center"} alignItems={"center"}>
+                    <IoMdArrowDropdown fontSize={"24px"} />
+                    {userInfo.email}
+                  </Flex>
+                </MenuButton>
+                <MenuList border="none" bg={"none"}>
+                  <MenuItem bg={"#1A1E51"}>Edit Profile</MenuItem>
+                  <MenuItem
+                    bg={"#1A1E51"}
+                    onClick={() => {
+                      dispatch(logout());
+                      navigate("/register");
+                    }}
+                  >
+                    Logout
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            ) : (
+              <FormattedMessage id="nav.google" />
+            )}
           </Button>
           <Button
             me="6px"
