@@ -19,14 +19,18 @@ import { Card } from "../components/cards/Feature";
 import CaptionCarousel from "../components/carousels/Home";
 import App from "../components/forms/Home";
 import { useNavigate } from "react-router-dom";
+//localisation
 import { FormattedMessage } from "react-intl";
 import { Context } from "../components/Wrapper";
+//decoration
+import HoveringBall from "../components/deco/HoveringBall";
 
 function HomePage() {
   const { theme, isStudent, setSelected } = useContext(ThemeContext);
   const [isLarge] = useMediaQuery("(min-width: 600px)");
   const navigate = useNavigate();
 
+  const [isMobile] = useMediaQuery("(max-width: 767px)");
   const context = useContext(Context);
 
   const handleScrollToForm = () => {
@@ -56,12 +60,7 @@ function HomePage() {
 
   return (
     <>
-     <Image
-      position="absolute"
-      src={process.env.PUBLIC_URL + '/purpleshape1.png' }// Provide the path to your image in the public folder
-      alt="Example Image" // Alt text for accessibility
-      boxSize="200px" // Set the size of the image as per your requirement
-    />
+      {!isMobile && <HoveringBall />}
       <Box
         pos={"relative"}
         ml={"auto"} // Use ml={"auto"} to push it to the right
@@ -92,7 +91,9 @@ function HomePage() {
         fontFamily={"League Spartan"}
         minW="60%"
         mx="auto"
+        pos="relative"
         minH="98vh"
+        zIndex="1"
         // bg={theme === "dark" ? "#13163c" : "#13163c"}
       >
         <Stack
@@ -103,6 +104,7 @@ function HomePage() {
           py={{ base: 20, md: 28 }}
         >
           <Heading
+            textAlign={"center"}
             fontFamily={"League Spartan"}
             fontWeight={600}
             fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
@@ -117,10 +119,13 @@ function HomePage() {
               <FormattedMessage id="app.header2" />
             </Text>
           </Heading>
-          <Text color={"white"}>
+          <Text textAlign={"center"} color={"white"}>
+            <FormattedMessage id="app.desc" />
+          </Text>
+          {/* <Text textAlign={"center"} color={"white"}>
             Session based interactive slide app. Give back to your loyal readers
             by granting them access to your pre-releases and sneak-peaks.
-          </Text>
+          </Text> */}
 
           <CaptionCarousel />
 
@@ -186,9 +191,8 @@ function HomePage() {
               Erken erişim
             </Heading>
             <Text color={"gray.300"} fontSize={{ base: "sm", sm: "lg" }}>
-              Erken kayıt yapan öğretmen ve öğrenciler ömür boyu yüzde yüz
-              indirim kazanır. Geliştirme sürecinde destek olan herkese teşekkür
-              ederiz.
+              Erken kayıt yapan öğretmen ve öğrenciler ömür boyu indirim
+              kazanır. Geliştirme sürecinde destek olan herkese teşekkür ederiz.
             </Text>
           </Stack>
 

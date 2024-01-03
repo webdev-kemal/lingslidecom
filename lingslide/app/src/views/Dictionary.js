@@ -25,7 +25,7 @@ import {
 import { RxHamburgerMenu, RxTokens, RxPlus } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import words from "../api/words_advanced";
-
+import { LuBookOpen } from "react-icons/lu";
 
 const Dictionary = () => {
   const navigate = useNavigate();
@@ -34,8 +34,8 @@ const Dictionary = () => {
   const [heading, setHeading] = useState("sözlüğüm");
   const [filterMethods, setFilterMethods] = useState([]);
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef()
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = React.useRef();
 
   const getBackgroundColor = (wordType) => {
     switch (wordType) {
@@ -127,11 +127,10 @@ const Dictionary = () => {
         py={"8px"}
         rounded={"md"}
         bg={"transparent"}
-        color={"white"} 
+        color={"white"}
         onClick={onOpen}
       >
         yeni kelime ekle{" "}
-      
         {grillView && (
           <Icon
             as={RxPlus}
@@ -147,27 +146,52 @@ const Dictionary = () => {
 
   return (
     <>
-     <Drawer
+      <Drawer
         isOpen={isOpen}
-        placement='right'
+        placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
-        
       >
         <DrawerOverlay />
         <DrawerContent bg="gray.800" color={"white"}>
+          <Box>
+            <LuBookOpen
+              style={{
+                position: "absolute",
+                right: "50%",
+                top: "50%",
+                transform: "translate(50%, -50%)",
+              }}
+              color="gray"
+              size="150px"
+            />
+            <Text
+              w="100%"
+              position="absolute"
+              color="gray"
+              textAlign={"center"}
+              top="63%"
+            >
+              Expanding your vocabulary...
+            </Text>
+          </Box>
           <DrawerCloseButton />
           <DrawerHeader>Kelime Ekle</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder='Type here...' />
+            <Input placeholder="Kelimeyi girin..." />
           </DrawerBody>
 
           <DrawerFooter>
-            <Button colorScheme="white" variant='outline' mr={3} onClick={onClose}>
+            <Button
+              colorScheme="white"
+              variant="outline"
+              mr={3}
+              onClick={onClose}
+            >
               Cancel
             </Button>
-            <Button colorScheme='blue'>Save</Button>
+            <Button colorScheme="blue">Save</Button>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>

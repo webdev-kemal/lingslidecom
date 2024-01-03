@@ -1,6 +1,7 @@
 {
   "app.header": "Yabancı dil öğretmeni misiniz?",
   "app.header2": "doğru yerdesiniz.",
+  "app.desc": "Sekans tabanlı interaktif slayt oluşturma uygulaması. Öğrencilerinizi ilginç araçlarımızla takibe alın.",
   "app.content": "تعلم React",
   "app.random": "I am dumber af",
   "app.channel.plug": "يقدم لك البرنامج التعليمي {blogName}",

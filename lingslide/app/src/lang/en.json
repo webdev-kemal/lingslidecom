@@ -2,6 +2,7 @@
   "app.insertion": "Edit<code>{fileName}</code> js and save to reload",
   "app.header": "Are you a language teacher?",
   "app.header2": "here's your spot.",
+  "app.desc": "Session based interactive slide creating app. Track your students progress and use many slide features.",
   "app.random": "I am dumb af",
   "app.content": "Learn React",
   "app.channel.plug": "Tutorial brought to you by {blogName}",
