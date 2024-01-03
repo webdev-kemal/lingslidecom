@@ -19,10 +19,13 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  useDisclosure,
+  Input,
 } from "@chakra-ui/react";
 import { RxHamburgerMenu, RxTokens, RxPlus } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import words from "../api/words_advanced";
+
 
 const Dictionary = () => {
   const navigate = useNavigate();
@@ -30,6 +33,9 @@ const Dictionary = () => {
   const [grillView, toggleGrillView] = useState(false);
   const [heading, setHeading] = useState("sözlüğüm");
   const [filterMethods, setFilterMethods] = useState([]);
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   const getBackgroundColor = (wordType) => {
     switch (wordType) {
@@ -121,12 +127,11 @@ const Dictionary = () => {
         py={"8px"}
         rounded={"md"}
         bg={"transparent"}
-        color={"white"}
-        onClick={() => {
-          // navigate(`./${title}`);
-        }}
+        color={"white"} 
+        onClick={onOpen}
       >
         yeni kelime ekle{" "}
+      
         {grillView && (
           <Icon
             as={RxPlus}
@@ -142,6 +147,30 @@ const Dictionary = () => {
 
   return (
     <>
+     <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        
+      >
+        <DrawerOverlay />
+        <DrawerContent bg="gray.800" color={"white"}>
+          <DrawerCloseButton />
+          <DrawerHeader>Kelime Ekle</DrawerHeader>
+
+          <DrawerBody>
+            <Input placeholder='Type here...' />
+          </DrawerBody>
+
+          <DrawerFooter>
+            <Button colorScheme="white" variant='outline' mr={3} onClick={onClose}>
+              Cancel
+            </Button>
+            <Button colorScheme='blue'>Save</Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
       <Heading
         color={"gray.600"}
         pos="fixed"

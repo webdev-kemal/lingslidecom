@@ -9,6 +9,7 @@ import {
   createIcon,
   Flex,
   useMediaQuery,
+  Image,
   Select,
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
@@ -55,6 +56,12 @@ function HomePage() {
 
   return (
     <>
+     <Image
+      position="absolute"
+      src={process.env.PUBLIC_URL + '/purpleshape1.png' }// Provide the path to your image in the public folder
+      alt="Example Image" // Alt text for accessibility
+      boxSize="200px" // Set the size of the image as per your requirement
+    />
       <Box
         pos={"relative"}
         ml={"auto"} // Use ml={"auto"} to push it to the right

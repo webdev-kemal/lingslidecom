@@ -13,7 +13,7 @@ const words = [
     in_english: "asd",
     register_difficulty: "familiar, any",
     type: "verb",
-    verb_participe: "adelgazado",
+    verb_participe: "asd",
     verb_group: "regular",
     prefix: "de",
     suffix: "ion",
