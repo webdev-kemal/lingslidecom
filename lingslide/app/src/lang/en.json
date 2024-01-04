@@ -12,5 +12,8 @@
   "nav.ai": "AI Tools",
   "nav.dict": "Dictionary",
   "nav.google": "Login with Google",
-  "nav.support": "Donations"
+  "nav.support": "Donations",
+
+  "maintenance.header": "Lingslide is being constructed.",
+  "maintenance.button": "Follow us on Instagram"
 }

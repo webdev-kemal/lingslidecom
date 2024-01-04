@@ -16,6 +16,7 @@ import { IntlProvider } from "react-intl";
 import Wrapper from "./components/Wrapper";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
+import Maintenance from "./components/special/Maintenance";
 
 export const ThemeContext = createContext();
 // ahh
@@ -47,6 +48,7 @@ function App() {
             <Wrapper>
               <Router>
                 {/* Navbar */}
+                <Maintenance />
                 <WithSubnavigation />
                 <Routes>
                   <Route path="/" element={<HomePage />} />

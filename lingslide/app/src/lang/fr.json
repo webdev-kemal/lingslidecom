@@ -11,5 +11,8 @@
   "nav.ai": "Outils d'IA",
   "nav.dict": "Dictionnaire",
   "nav.google": "Connectez via Google",
-  "nav.support": "Supporter"
+  "nav.support": "Supporter",
+
+  "maintenance.header": "Lingslide est en cours de construction.",
+  "maintenance.button": "Suivrez-nous sur Instagram"
 }
