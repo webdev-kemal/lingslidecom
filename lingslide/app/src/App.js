@@ -18,6 +18,7 @@ import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import Maintenance from "./components/special/Maintenance";
 import Page404 from "./components/special/Page404";
+import Collections from "./views/Collections";
 
 export const ThemeContext = createContext();
 // ahh
@@ -59,6 +60,7 @@ function App() {
                   <Route path="/dictionary/:title" element={<WordView />} />
                   <Route path="/jobs" element={<Positions />} />
                   <Route path="/register" element={<Login />} />
+                  <Route path="/collections" element={<Collections />} />
 
                   {/* 404 */}
                   <Route path="*" element={<Page404 />} />

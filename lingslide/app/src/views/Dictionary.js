@@ -21,16 +21,27 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Input,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
 } from "@chakra-ui/react";
-import { RxHamburgerMenu, RxTokens, RxPlus } from "react-icons/rx";
+import {
+  RxHamburgerMenu,
+  RxTokens,
+  RxPlus,
+  RxDoubleArrowDown,
+  RxDoubleArrowUp,
+} from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import words from "../api/words_advanced";
 import { LuBookOpen } from "react-icons/lu";
 
 const Dictionary = () => {
   const navigate = useNavigate();
-
-  const [grillView, toggleGrillView] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [grillView, toggleGrillView] = useState(true);
   const [heading, setHeading] = useState("sözlüğüm");
   const [filterMethods, setFilterMethods] = useState([]);
 
@@ -80,6 +91,7 @@ const Dictionary = () => {
     headingFunc,
   }) => {
     const backgroundColor = getBackgroundColor(type);
+
     return (
       <Box
         _hover={{
@@ -214,6 +226,65 @@ const Dictionary = () => {
         minH="98vh"
       >
         <Stack as={Box} spacing={{ base: 8, md: 8 }} py={{ base: 20, md: 28 }}>
+          {/* CHANGE CURRENT COLLECTION */}
+          <Accordion allowToggle allowMultiple>
+            <AccordionItem border="none">
+              {" "}
+              <AccordionButton
+                as="Flex"
+                alignItems="center"
+                w="100%"
+                h="50px"
+                bg="rgba(0,0,0,0.5)"
+                border="1px solid white"
+                _hover={{
+                  bg: "rgba(0,0,0,0.3)",
+                  cursor: "pointer",
+                }}
+                onMouseOver={() => setIsHovered(true)}
+                onMouseOut={() => setIsHovered(false)}
+              >
+                <RxDoubleArrowUp
+                  style={{ "margin-left": "8px" }}
+                  fontSize={"28px"}
+                  style={{
+                    marginLeft: "8px",
+                    transform: isHovered ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "all ease-out 0.2s",
+                  }}
+                />
+                <Text mt="2" ms="2" fontSize="30px">
+                  Current set
+                </Text>
+              </AccordionButton>
+              <AccordionPanel pb={4}>
+                <Box
+                  bg="rgba(0,0,0,0.7)"
+                  p={5}
+                  _hover={{
+                    cursor: "pointer",
+                    bg: "rgba(255,255,255,0.1)",
+                    transition: "0.1s",
+                  }}
+                >
+                  B1 Kelimelerrr
+                </Box>
+
+                <Box
+                  bg="rgba(0,0,0,0.7)"
+                  p={5}
+                  _hover={{
+                    cursor: "pointer",
+                    bg: "rgba(255,255,255,0.1)",
+                    transition: "0.1s",
+                  }}
+                >
+                  Mutfakla ilgili her şey
+                </Box>
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+
           <Box>
             <Heading>My Dictionary</Heading>
             <Box display="flex" flexDirection="row" alignItems="center">

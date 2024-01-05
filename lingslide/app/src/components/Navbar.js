@@ -182,7 +182,7 @@ const DesktopNav = () => {
                 <Box
                   as="a"
                   p={2}
-                  href={navItem.href ?? "#"}
+                  href={navItem.href ?? "#/collections"}
                   fontSize={"sm"}
                   fontWeight={500}
                   color={linkColor}
@@ -320,6 +320,7 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: <FormattedMessage id="nav.blogs" />,
+    href: "/#/blogs",
     children: [
       {
         label: "Yabancı Dil Blogları",
@@ -335,6 +336,7 @@ const NAV_ITEMS = [
   },
   {
     label: <FormattedMessage id="nav.ai" />,
+    href: "/#/tools",
     children: [
       {
         label: "Çalışma Ortamım",
@@ -350,7 +352,7 @@ const NAV_ITEMS = [
   },
   {
     label: <FormattedMessage id="nav.dict" />,
-    href: "/#/dictionary",
+    href: "/#/collections",
   },
   // {
   //   label: "SSS",

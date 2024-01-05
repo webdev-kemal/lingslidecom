@@ -28,7 +28,7 @@ const HoveringBall = ({ ...props }) => {
       <motion.div
         animate={{ y: [220, 210, 220] }} // Array of values for y-axis movement
         transition={{
-          duration: 7, // Duration of each iteration
+          duration: 6, // Duration of each iteration
           repeat: Infinity, // Repeat the animation infinitely
           ease: "easeInOut", // Easing function for smoother animation
         }}

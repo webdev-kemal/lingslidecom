@@ -17,6 +17,7 @@ import {
   useMediaQuery,
   Spinner,
 } from "@chakra-ui/react";
+import Painting from "../components/deco/Painting";
 import { BsCheck2All, BsArrowRight } from "react-icons/bs";
 
 const GPTDemo = () => {
@@ -118,19 +119,8 @@ const GPTDemo = () => {
             </Flex>
           </Box>
           <Heading size="xl">Hemen deneyin!</Heading>
-
-          <Box
-            w="100%"
-            height={"200px"}
-            border="1px solid white"
-            // bg="rgba(0,0,0,0.5)"
-            style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL}/redcircle.png)`,
-              backgroundRepeat: "repeat",
-              /* Add other styles as needed */
-            }}
-            rounded="md"
-          ></Box>
+          {/* Spinning ball painting */}
+          <Painting />
 
           <Grid templateColumns={isDesktop ? "3fr 3fr" : "6fr "}>
             <GridItem

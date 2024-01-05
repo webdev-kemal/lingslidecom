@@ -6,6 +6,9 @@ import Flicking, { MoveEvent, WillChangeEvent } from "@egjs/react-flicking";
 import { AutoPlay } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/flicking-plugins.css";
 
+// import { FormattedMessage } from "react-intl";
+// import { Context } from "../components/Wrapper";
+
 export default function CaptionCarousel() {
   // const _plugins = [new AutoPlay()];
   const _plugins = [new AutoPlay({ duration: 2600, stopOnHover: true })];

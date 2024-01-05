@@ -14,6 +14,8 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useLocation, useNavigate, useParams, Link } from "react-router-dom";
+import Painting from "../deco/Painting";
+import { BsCheck2All, BsArrowRight } from "react-icons/bs";
 
 const Page404 = () => {
   const history = useNavigate();
@@ -38,15 +40,33 @@ const Page404 = () => {
         <Heading size="2xl" color="pink.400">
           Aradığınız sayfa bulunamadı.
         </Heading>
-        <Text
-          size="xl"
-          _hover={{ cursor: "pointer", textDecoration: "underline" }}
-          onClick={() => {
-            history(redirect);
+        <Painting />
+
+        <Flex
+          align="center"
+          _hover={{
+            cursor: "pointer",
+            ".hoverIcon": {
+              marginLeft: "10px",
+              transition: "all ease-out 0.2s",
+            },
+            ".dahaFazlasi": {
+              textDecoration: "underline",
+            },
           }}
+          transition="all ease-out 0.2s"
         >
-          Anasayfaya Dönün
-        </Text>
+          <Text
+            className="dahaFazlasi"
+            onClick={() => {
+              history(redirect);
+            }}
+          >
+            Anasayfaya dönün
+          </Text>
+          &nbsp;
+          <BsArrowRight className="hoverIcon" transition="all ease-out 0.2s" />
+        </Flex>
       </Stack>
     </Container>
   );
