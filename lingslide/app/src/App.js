@@ -17,6 +17,7 @@ import Wrapper from "./components/Wrapper";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
 import Maintenance from "./components/special/Maintenance";
+import Page404 from "./components/special/Page404";
 
 export const ThemeContext = createContext();
 // ahh
@@ -48,7 +49,7 @@ function App() {
             <Wrapper>
               <Router>
                 {/* Navbar */}
-                <Maintenance />
+                {/* <Maintenance /> */}
                 <WithSubnavigation />
                 <Routes>
                   <Route path="/" element={<HomePage />} />
@@ -58,6 +59,10 @@ function App() {
                   <Route path="/dictionary/:title" element={<WordView />} />
                   <Route path="/jobs" element={<Positions />} />
                   <Route path="/register" element={<Login />} />
+
+                  {/* 404 */}
+                  <Route path="*" element={<Page404 />} />
+
                   {/* <Route path="/donate" element={<Dictionary />} />
                 <Route path="/login" element={<Dictionary />} />
                 <Route path="/tools" element={<Dictionary />} />

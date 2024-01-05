@@ -1,0 +1,19 @@
+{
+  "app.content": "Apprendre React",
+  "app.random": "Je suis tout fou",
+  "app.channel.plug": "Tutoriel présenté par Lokalise",
+  "app.plural": "{amount, plural, =0 {no languages} one {# one language} few {# several languages} many {# lots of languages} other {# wrong fromat}}",
+
+  "app.header": "¿Eres profesor de idiomas?",
+  "app.header2": "Bien en tu lugar.",
+  "app.desc": "Crea diapositivas interactivas por sesión. Sigue el progreso de tus estudiantes y utiliza muchas herramientas.",
+
+  "nav.blogs": "Noticias",
+  "nav.ai": "Herramientas de IA",
+  "nav.dict": "Diccionario",
+  "nav.google": "Conéctate a través de Google",
+  "nav.support": "Soporte",
+
+  "maintenance.header": "Lingslide estará disponible pronto.",
+  "maintenance.button": "Síguenos en Instagram"
+}

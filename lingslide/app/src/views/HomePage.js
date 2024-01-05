@@ -21,7 +21,7 @@ import App from "../components/forms/Home";
 import { useNavigate } from "react-router-dom";
 //localisation
 import { FormattedMessage } from "react-intl";
-import { Context } from "../components/Wrapper";
+import { Context, SelectLanguage } from "../components/Wrapper";
 //decoration
 import HoveringBall from "../components/deco/HoveringBall";
 
@@ -66,25 +66,7 @@ function HomePage() {
         ml={"auto"} // Use ml={"auto"} to push it to the right
         top={"0px"}
       >
-        <Select
-          color={"white"}
-          size="sm"
-          border={"none"}
-          maxW={"65px"}
-          bg="transparent"
-          value={context.locale}
-          onChange={context.selectLanguage}
-        >
-          <option style={{ backgroundColor: "#13163C" }} value="tr">
-            TR
-          </option>
-          <option style={{ backgroundColor: "#13163C" }} value="en">
-            EN
-          </option>
-          <option style={{ backgroundColor: "#13163C" }} value="fr">
-            FR
-          </option>
-        </Select>
+        <SelectLanguage />
       </Box>
       <Container
         color={"white"}

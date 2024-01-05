@@ -43,7 +43,7 @@ export default function WithSubnavigation() {
   const { loading, error, userInfo } = userLogin;
 
   return (
-    <Box maxW={"100vw"} overflow={"hidden"}>
+    <Box maxW={"100vw"}>
       <Flex
         bg={theme === "dark" ? "#1a1e51" : "#1a1e51"}
         color={theme === "dark" ? "white" : "black"}

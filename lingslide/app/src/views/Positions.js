@@ -48,19 +48,7 @@ const Positions = () => {
               <Text>Yapay Zeka Uzmanı</Text>
               {selectedJob === 0 && <TextApply />}
             </Box>
-            <Box
-              _hover={{ cursor: "pointer" }}
-              pos={"relative"}
-              rounded={"md"}
-              p={5}
-              border={"solid 1px white"}
-              onMouseOver={() => {
-                setJob(1);
-              }}
-            >
-              <Text>Veri Analisti</Text>
-              {selectedJob === 1 && <TextApply />}
-            </Box>
+
             <Box
               _hover={{ cursor: "pointer" }}
               pos={"relative"}

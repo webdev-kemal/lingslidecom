@@ -12,9 +12,8 @@ import {
 } from "@chakra-ui/react";
 //localisation
 import { FormattedMessage } from "react-intl";
-import { Context } from "../../components/Wrapper";
+import { Context, SelectLanguage } from "../../components/Wrapper";
 import { LuBookOpen } from "react-icons/lu";
-import HoveringBall from "../deco/HoveringBall";
 
 const Maintenance = () => {
   const postLinks = [
@@ -29,7 +28,6 @@ const Maintenance = () => {
 
   return (
     <Box pos="absolute" w="100%" h="100%" overflow="hidden">
-      <HoveringBall zIndex="999" />
       {/* <LuBookOpen
         style={{
           position: "fixed",
@@ -50,25 +48,7 @@ const Maintenance = () => {
         left="50%"
         transform="translate(-50%, 0%)"
       >
-        <Select
-          color={"white"}
-          size="sm"
-          border={"none"}
-          maxW={"65px"}
-          bg="transparent"
-          value={context.locale}
-          onChange={context.selectLanguage}
-        >
-          <option style={{ backgroundColor: "#13163C" }} value="tr">
-            TR
-          </option>
-          <option style={{ backgroundColor: "#13163C" }} value="en">
-            EN
-          </option>
-          <option style={{ backgroundColor: "#13163C" }} value="fr">
-            FR
-          </option>
-        </Select>
+        <SelectLanguage />
       </Box>
       <Box
         // bg="rgba(0, 0, 0, 0.8)" // Black background with 50% opacity

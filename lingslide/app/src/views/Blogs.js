@@ -383,10 +383,14 @@ const Blogs = () => {
                 textDecoration: "underline",
               },
             }}
+            transition="all ease-out 0.2s"
           >
-            <Text className="dahaFazlasi">Daha fazlası ve satış ortaklığı</Text>{" "}
+            <Text className="dahaFazlasi">Daha fazlası ve satış ortaklığı</Text>
             &nbsp;
-            <BsArrowRight className="hoverIcon" transition="all ease 0.3s" />
+            <BsArrowRight
+              className="hoverIcon"
+              transition="all ease-out 0.2s"
+            />
           </Flex>
         </Stack>
       </Container>

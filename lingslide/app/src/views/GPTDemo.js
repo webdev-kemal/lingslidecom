@@ -39,12 +39,12 @@ const GPTDemo = () => {
     if (selectedTab === 0) {
       return (
         <>
-          <Heading fontSize={"lg"} mb={2}>
+          {/* <Heading fontSize={"lg"} mb={2}>
             Sorgu
           </Heading>
           <Text mb={5} color="pink.400">
             Girdi: {userInput}
-          </Text>
+          </Text> */}
 
           <Heading fontSize={"lg"} mb={2}>
             Yanıt
@@ -119,6 +119,19 @@ const GPTDemo = () => {
           </Box>
           <Heading size="xl">Hemen deneyin!</Heading>
 
+          <Box
+            w="100%"
+            height={"200px"}
+            border="1px solid white"
+            // bg="rgba(0,0,0,0.5)"
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL}/redcircle.png)`,
+              backgroundRepeat: "repeat",
+              /* Add other styles as needed */
+            }}
+            rounded="md"
+          ></Box>
+
           <Grid templateColumns={isDesktop ? "3fr 3fr" : "6fr "}>
             <GridItem
               pos="relative"
@@ -134,7 +147,7 @@ const GPTDemo = () => {
                 setTab(0);
               }}
             >
-              <Text fontWeight={"bold"}>Öğrencilerinizi takip edin</Text>
+              <Text fontWeight={"bold"}>Madlibs AI</Text>
               <Box
                 w="100%"
                 pos="absolute"
@@ -157,7 +170,7 @@ const GPTDemo = () => {
                 setTab(1);
               }}
             >
-              <Text fontWeight={"bold"}>Slaytlardan para kazanma*</Text>
+              <Text fontWeight={"bold"}>Taboo AI</Text>
               <Box
                 w="100%"
                 pos="absolute"
