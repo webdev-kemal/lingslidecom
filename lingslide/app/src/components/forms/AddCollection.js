@@ -314,10 +314,26 @@ const AddCollection = ({ isOpen, onClose }) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="gray" mr={2} onClick={onClose}>
-            Vazgeç
-          </Button>
-          <Button colorScheme="blue">Oluştur</Button>
+          <Flex justifyContent="space-between" w="100%">
+            <Box>
+              <Flex alignItems={"center"}>
+                <Text me={2} fontFamily={" League Spartan"} fontWeight={"bold"}>
+                  koleksiyon dilini seçin
+                </Text>
+                <Select variant="filled" w="140px">
+                  <option value="english">İngilizce</option>
+                  <option value="french">Fransızca</option>
+                  <option value="spanish">İspanyolca</option>
+                </Select>
+              </Flex>
+            </Box>
+            <Flex>
+              <Button colorScheme="gray" mr={2} onClick={onClose}>
+                Vazgeç
+              </Button>
+              <Button colorScheme="blue">Oluştur</Button>
+            </Flex>
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>

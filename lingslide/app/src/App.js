@@ -19,6 +19,7 @@ import configureStore from "./store/configureStore";
 import Maintenance from "./components/special/Maintenance";
 import Page404 from "./components/special/Page404";
 import Collections from "./views/Collections";
+import UserProfile from "./views/UserProfile";
 
 export const ThemeContext = createContext();
 // ahh
@@ -56,11 +57,21 @@ function App() {
                   <Route path="/" element={<HomePage />} />
                   <Route path="/blogs" element={<Blogs />} />
                   <Route path="/demo" element={<GPTDemo />} />
-                  <Route path="/dictionary" element={<Dictionary />} />
-                  <Route path="/dictionary/:title" element={<WordView />} />
                   <Route path="/jobs" element={<Positions />} />
                   <Route path="/register" element={<Login />} />
-                  <Route path="/collections" element={<Collections />} />
+                  <Route path="/user/:username" element={<UserProfile />} />
+                  <Route
+                    path="/user/:username/collections"
+                    element={<Collections />}
+                  />
+                  <Route
+                    path="/user/:username/collections/:id"
+                    element={<Dictionary />}
+                  />
+                  <Route
+                    path="/dictionary/:usercollection"
+                    element={<WordView />}
+                  />
 
                   {/* 404 */}
                   <Route path="*" element={<Page404 />} />
